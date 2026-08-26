@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
+/* ============ FIELD NOTES DESIGN TOKENS ============ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f6f2e9;
+  --paper-card: #fbf8f1;
+  --paper-card-strong: #fdf8f1;
+  --ink: #1c1a17;
+  --ink-soft: #4a463f;
+  --ink-muted: #5a554a;
+  --accent: #c03914;
+  --accent-soft: #c22f14;
+  --green-note: #3c554a;
+  --rule: rgba(28, 26, 23, 0.045);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============ BASE ============ */
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-fraunces), Georgia, serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ruled paper background */
+.ruled-paper {
+  position: relative;
+}
+.ruled-paper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 31px,
+    var(--rule) 31px 32px
+  );
+  z-index: 0;
+}
+
+/* ============ HAND-DRAWN UTILITIES ============ */
+.wobble {
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.hand-note {
+  font-family: var(--font-caveat), cursive;
+  color: var(--accent);
+}
+
+.hand-note-green {
+  font-family: var(--font-caveat), cursive;
+  color: var(--green-note);
+}
+
+/* Felt-tip stamp button */
+.btn-stamp {
+  display: inline-block;
+  padding: 13px 26px;
+  font-family: var(--font-fraunces), serif;
+  font-size: 17px;
+  font-weight: 600;
+  border: 2px solid var(--ink);
+  background: #fffdf8;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(28, 26, 23, 0.9);
+  transition: transform 0.06s, box-shadow 0.06s;
+}
+.btn-stamp:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(28, 26, 23, 0.9);
+}
+.btn-stamp.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-stamp.primary:hover {
+  background: var(--accent);
+}
+
+/* Wavy underline doodle */
+.doodle-underline {
+  position: relative;
+  white-space: nowrap;
+}
+.doodle-underline svg {
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 12px;
+}
+
+/* Section divider */
+.ink-divider {
+  border-bottom: 2px solid var(--ink);
+}
+
+/* Dashed list divider for blog */
+.dash-divider {
+  border-bottom: 1.5px dashed var(--ink);
+}
+
+/* Card base */
+.card-paper {
+  border: 1.5px solid var(--ink);
+  background: var(--paper-card);
+}
+.card-paper-strong {
+  border: 2px solid var(--ink);
+  background: var(--paper-card-strong);
+}
+
+/* Focus visibility (accessibility) */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--paper);
 }

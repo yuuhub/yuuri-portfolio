@@ -1,6 +1,6 @@
 import { Topbar } from "@/components/topbar";
 import { Footer } from "@/components/footer";
-import { DoodleUnderline, StarDoodle, SectionHeading, TapeDoodle, TimelineDoodle } from "@/components/doodles";
+import { DoodleUnderline, StarDoodle, SectionHeading, TapeDoodle, TimelineDoodle, GalleryPolaroid } from "@/components/doodles";
 import { services } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { testimonials, fieldNotes } from "@/data/content";
@@ -225,42 +225,31 @@ export default function Home() {
       >
         <SectionHeading title="About me" note="the person behind the pages" />
         <div className="card-paper-strong wobble p-6 md:p-8 mt-7">
-          <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 md:gap-10">
-            {/* Polaroid photo */}
-            <div className="mx-auto md:mx-0 w-fit">
-              <div className="relative bg-[#fffdf8] border-2 border-[var(--ink)] p-2 pb-10 rotate-2 shadow-[4px_5px_0_rgba(28,26,23,0.85)] w-[240px]">
-                <TapeDoodle className="absolute -top-3 left-1/2 -translate-x-1/2 w-[90px] h-[28px] -rotate-2" />
-                {/* Swap public/me.png for the real photo when ready */}
-                <img
-                  src="/me.png"
-                  alt="Yuuri Penas, Lead WordPress Developer"
-                  width={224}
-                  height={224}
-                  className="w-[224px] h-[224px] object-cover wobble-sm grayscale-[15%]"
-                  loading="lazy"
-                />
-                <span className="hand-note absolute bottom-2 left-3 text-[20px]">
-                  that&apos;s me
-                </span>
-              </div>
-            </div>
-
-            {/* Story + timeline */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-8 md:gap-10">
+            {/* Story */}
             <div>
               <p className="text-[15.5px] md:text-[16.5px] text-[var(--ink-soft)] leading-relaxed">
                 I started in UX design in 2015, drawing interfaces before I
                 ever built one. In 2022 I moved to the other side of the
-                screen and became a WordPress developer, and now I lead
+                screen and became a WordPress developer. Today I lead
                 WordPress work at Rocket Clicks, where our sites have to
                 perform for law firms that live and die by their search
                 rankings.
               </p>
               <p className="text-[15.5px] md:text-[16.5px] text-[var(--ink-soft)] leading-relaxed mt-4">
-                The design background is the difference: I build like a
-                developer but think like a designer, so nothing gets lost
-                between the mockup and the live site. And because the pages I
-                make are measured on real users, &ldquo;looks good&rdquo;
-                isn&apos;t done until Core Web Vitals agrees.
+                My favorite part is the strategy: architecting the solution
+                before touching the keyboard. The design background helps
+                here, so nothing gets lost between the mockup and the live
+                site. And because the pages I make are measured on real
+                users, &ldquo;looks good&rdquo; isn&apos;t done until Core
+                Web Vitals agrees.
+              </p>
+              <p className="text-[15.5px] md:text-[16.5px] text-[var(--ink-soft)] leading-relaxed mt-4">
+                Off the clock: chasing strength numbers at the gym, slowly
+                (slowly) learning Spanish, working through a manga pile, and
+                getting lost in Guild Wars 2. I&apos;m also getting into
+                photography with a Fuji X-T30 III, which mostly means my cat
+                Maddie has a very patient personal photographer.
               </p>
               <div className="mt-6 flex gap-5">
                 <div className="shrink-0 w-[18px] flex justify-center">
@@ -296,6 +285,30 @@ export default function Home() {
               <span className="hand-note text-[20px] inline-block mt-5 rotate-1">
                 still excited by a fast page, every time
               </span>
+            </div>
+
+            {/* Polaroid gallery */}
+            <div className="flex flex-wrap gap-5 justify-center md:justify-start content-start">
+              <GalleryPolaroid
+                src="/me.png"
+                caption="that's me"
+                rotate="rotate-2"
+              />
+              <GalleryPolaroid
+                src="/polaroid-maddie.svg"
+                caption="Maddie, the supervisor"
+                rotate="-rotate-2"
+              />
+              <GalleryPolaroid
+                src="/polaroid-camera.svg"
+                caption="learning the Fuji"
+                rotate="rotate-1"
+              />
+              <GalleryPolaroid
+                src="/polaroid-gym.svg"
+                caption="chasing PRs"
+                rotate="-rotate-1"
+              />
             </div>
           </div>
         </div>

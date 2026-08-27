@@ -46,6 +46,36 @@ export function SectionHeading({
   );
 }
 
+/** Polaroid gallery card: photo + tape + handwritten caption */
+export function GalleryPolaroid({
+  src,
+  caption,
+  rotate = "",
+}: {
+  src: string;
+  caption: string;
+  rotate?: string;
+}) {
+  return (
+    <figure
+      className={`relative bg-[#fffdf8] border-2 border-[var(--ink)] p-1.5 pb-9 shadow-[3px_4px_0_rgba(28,26,23,0.85)] w-[128px] ${rotate}`}
+    >
+      <TapeDoodle className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-[70px] h-[22px] -rotate-2" />
+      <img
+        src={src}
+        alt={caption}
+        width={114}
+        height={114}
+        className="w-[114px] h-[114px] object-cover wobble-sm"
+        loading="lazy"
+      />
+      <figcaption className="hand-note absolute bottom-1.5 left-2 text-[15px] whitespace-nowrap">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 /** Washi-tape strip for pinning photos into the notebook */
 export function TapeDoodle({ className = "" }: { className?: string }) {
   return (

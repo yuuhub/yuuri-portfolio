@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 114 114">
+  <!-- Placeholder: dumbbell, sketchy line drawing -->
+  <rect width="114" height="114" fill="#f6f2e9"/>
+  <g stroke="#1c1a17" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <!-- bar -->
+    <path d="M30 57 L 84 57"/>
+    <!-- left plates -->
+    <rect x="18" y="42" width="7" height="30" rx="2"/>
+    <rect x="27" y="47" width="5" height="20" rx="2" stroke-width="2"/>
+    <!-- right plates -->
+    <rect x="89" y="42" width="7" height="30" rx="2"/>
+    <rect x="82" y="47" width="5" height="20" rx="2" stroke-width="2"/>
+  </g>
+  <!-- red accent: chalk dust / rep marker -->
+  <g stroke="#c83c28" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9">
+    <path d="M50 30 L 50 36"/>
+    <path d="M57 26 L 57 34"/>
+    <path d="M64 30 L 64 36"/>
+  </g>
+  <path d="M12 100 C 40 96, 75 104, 102 99" stroke="#c83c28" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85"/>
+</svg>

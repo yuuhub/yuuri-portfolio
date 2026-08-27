@@ -3,7 +3,7 @@
 // (react-dom, webpack runtime, page payload) do nothing except consume
 // bandwidth on slow connections. Inline scripts (menu toggle, JSON-LD)
 // are preserved.
-import { readdirSync, readFileSync, writeFileSync, rmSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync, rmSync, renameSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 const outDir = join(process.cwd(), "out");
@@ -23,6 +23,11 @@ for (const file of htmlFiles) {
   // for a static site with no client-side navigation.
   stripped = stripped.replace(
     /<script>\(?self\.__next_f[\s\S]*?<\/script>\s*/g,
+    ""
+  );
+  // Remove preload links pointing at stripped chunks (would 404 on fetch).
+  stripped = stripped.replace(
+    /<link[^>]*rel="preload"[^>]*href="\/_next\/static\/chunks\/[^"]*"[^>]*\/>\s*/g,
     ""
   );
   // Remove dead RSC payload files and unreferenced framework chunks.
@@ -53,23 +58,18 @@ for (const file of htmlFiles) {
 }
 console.log(`done: ${totalRemoved} framework script tag(s) removed across ${htmlFiles.length} HTML file(s)`);
 
-// Remove duplicate shadow files: Next static export emits both
-// blog.html and blog/index.html for the same route. Duplicate URLs
-// (with and without .html) are bad for SEO; keep the directory form.
-let shadowsRemoved = 0;
-for (const f of readdirSync(outDir, { recursive: true })) {
+// Normalize route files: Next static export emits flat `blog.html` but the
+// `blog/` directory it also creates has no index.html, so /blog 404s.
+// Convert flat files to directory form so clean URLs (/blog) work, and so
+// there is exactly one URL per route (no .html duplicates — good for SEO).
+let converted = 0;
+for (const f of readdirSync(outDir, { recursive: false })) {
   if (typeof f !== "string" || !f.endsWith(".html")) continue;
-  const withoutExt = f.slice(0, -5); // strip ".html"
-  if (withoutExt === "index" || withoutExt === "404") continue;
-  const dirIndex = join(outDir, withoutExt, "index.html");
-  try {
-    if (readdirSync(join(outDir, withoutExt), { recursive: false }).includes("index.html")) {
-      rmSync(join(outDir, f), { force: true });
-      shadowsRemoved++;
-      console.log(`removed shadow file: out/${f}`);
-    }
-  } catch {
-    // directory doesn't exist for this .html file — it's the only form, keep it
-  }
+  if (f === "index.html" || f === "404.html") continue;
+  const name = f.slice(0, -5);
+  mkdirSync(join(outDir, name), { recursive: true });
+  renameSync(join(outDir, f), join(outDir, name, "index.html"));
+  converted++;
+  console.log(`converted out/${f} -> out/${name}/index.html`);
 }
-console.log(`shadow cleanup: ${shadowsRemoved} file(s) removed`);
+console.log(`route normalization: ${converted} file(s) converted`);

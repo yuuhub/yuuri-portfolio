@@ -37,7 +37,9 @@ export default function Home() {
             See the work
           </a>
           <a
-            href="mailto:yuuriayano@gmail.com?subject=Project%20inquiry"
+            href="https://calendly.com/yuuriayano/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-stamp"
           >
             Book a call
@@ -177,6 +179,8 @@ export default function Home() {
               </ul>
               <a
                 href={s.ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-auto pt-4 text-[15px] font-semibold border-b-2 border-[var(--accent)] self-center hover:text-[var(--accent)]"
               >
                 {s.cta}

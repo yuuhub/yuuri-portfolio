@@ -10,6 +10,8 @@ export type Service = {
   ctaHref: string;
 };
 
+const BOOKING_URL = "https://calendly.com/yuuriayano/30min";
+
 export const services: Service[] = [
   {
     slug: "performance-audit",
@@ -33,7 +35,7 @@ export const services: Service[] = [
       "Ongoing monitoring",
     ],
     cta: "Book an audit",
-    ctaHref: "mailto:yuuriayano@gmail.com?subject=Performance%20Audit%20inquiry",
+    ctaHref: BOOKING_URL,
   },
   {
     slug: "speed-optimization-sprint",
@@ -56,7 +58,7 @@ export const services: Service[] = [
       "Ongoing maintenance",
     ],
     cta: "Book a sprint",
-    ctaHref: "mailto:yuuriayano@gmail.com?subject=Speed%20Optimization%20Sprint%20inquiry",
+    ctaHref: BOOKING_URL,
   },
   {
     slug: "performance-retainer",
@@ -78,6 +80,6 @@ export const services: Service[] = [
       "Content production",
     ],
     cta: "Book a call",
-    ctaHref: "mailto:yuuriayano@gmail.com?subject=Performance%20Retainer%20inquiry",
+    ctaHref: BOOKING_URL,
   },
 ];

@@ -22,6 +22,16 @@ export function Footer() {
           >
             yuuriayano@gmail.com
           </a>
+          <div className="mt-5">
+            <a
+              href="https://calendly.com/yuuriayano/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-stamp"
+            >
+              Book a 30-min call
+            </a>
+          </div>
           <div className="mt-4 text-[15px]">
             {socials.map((s, i) => (
               <span key={s.name}>

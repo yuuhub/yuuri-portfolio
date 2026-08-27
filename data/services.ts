@@ -17,13 +17,13 @@ export const services: Service[] = [
     price: "$300 to $500",
     priceNote: "fixed",
     description:
-      "I measure your baseline, find what is slow and why, and hand you a prioritized fix list you can act on.",
+      "I find what is slow and why, and hand you a prioritized fix list.",
     includes: [
-      "Baseline measurement of up to 5 key pages (homepage plus 4 money pages)",
-      "PageSpeed Insights (mobile and desktop), CrUX field data when available, WebPageTest waterfall",
-      "Root-cause analysis: LCP, INP, CLS, TTFB, plugin audit, image and font audit, third-party script audit",
-      "Written report with prioritized fixes (P0, P1, P2), estimated impact and effort per fix",
-      "A clear call on what is fixable vs what needs a rebuild",
+      "Baseline of up to 5 key pages",
+      "PageSpeed Insights, CrUX, and WebPageTest analysis",
+      "Root-cause analysis: LCP, INP, CLS, TTFB, plugins, images, fonts, scripts",
+      "Written report with prioritized fixes and estimated impact",
+      "Clear call: fix or rebuild",
       "1 week turnaround",
     ],
     notIncluded: [
@@ -42,9 +42,9 @@ export const services: Service[] = [
     description:
       "I implement the fixes, re-measure, and document the before and after. You keep the report.",
     includes: [
-      "The audit (or works from an audit you already have)",
-      "Implementation of P0 and P1 fixes: image optimization, caching configuration, script deferral, critical CSS, font optimization, plugin cleanup, database cleanup, CDN configuration",
-      "Re-measurement and a before/after report (PSI and CrUX)",
+      "The audit (or works from an existing audit)",
+      "P0 and P1 fixes: images, caching, scripts, critical CSS, fonts, plugins, database, CDN",
+      "Re-measurement and a before/after report",
       "2 to 4 weeks depending on scope",
     ],
     notIncluded: [
@@ -65,10 +65,10 @@ export const services: Service[] = [
     description:
       "24/7 monitoring, monthly report, incident response. The site stays fast after I leave.",
     includes: [
-      "24/7 uptime and performance monitoring (New Relic or equivalent)",
+      "24/7 uptime and performance monitoring",
       "Monthly performance report: CWV, uptime, incidents, trends",
       "Incident response: same-day fixes for critical issues",
-      "A monthly optimization budget of improvement work (capped hours, agreed per month)",
+      "Monthly optimization budget (capped hours, agreed per month)",
       "Month to month, cancel anytime",
     ],
     notIncluded: [

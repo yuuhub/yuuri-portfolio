@@ -1,98 +1,62 @@
-// Live Core Web Vitals badge.
-// - With PSI_API_KEY set: fetches PageSpeed Insights once per day (ISR revalidate),
-//   shows the real lab score for this site.
-// - Without a key (pre-deploy): renders an honest placeholder stamp.
-// - If the API call fails or field data is missing, labels itself accordingly.
+// Live Core Web Vitals badge (static export edition).
+// Renders an honest placeholder stamp; a tiny inline vanilla script
+// (no React, no framework JS) fetches the PageSpeed Insights score
+// keyless from the browser and caches it in localStorage for 24h.
 // "Measured, not promised" applies to the badge itself too.
 
-type PsiResponse = {
-  lighthouseResult?: {
-    categories?: {
-      performance?: { score?: number };
-    };
-  };
-  loadingExperience?: {
-    metrics?: Record<string, unknown>;
-    overall_category?: string;
-  };
-  error?: { message?: string };
-};
-
-async function getLiveScore(): Promise<{
-  score: number | null;
-  fieldData: boolean;
-  error: string | null;
-}> {
-  const key = process.env.PSI_API_KEY || process.env.NEXT_PUBLIC_PSI_API_KEY;
-  if (!key) {
-    return { score: null, fieldData: false, error: "no-key" };
-  }
-
-  try {
-    const url = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(
-      "https://yuuri.info"
-    )}&strategy=mobile&category=performance&key=${encodeURIComponent(key)}`;
-    const res = await fetch(url, {
-      next: { revalidate: 86400 }, // one call per day
-    });
-    if (!res.ok) {
-      return { score: null, fieldData: false, error: `http-${res.status}` };
-    }
-    const data = (await res.json()) as PsiResponse;
-    if (data.error) {
-      return { score: null, fieldData: false, error: data.error.message || "api-error" };
-    }
-    const raw = data.lighthouseResult?.categories?.performance?.score;
-    const score = typeof raw === "number" ? Math.round(raw * 100) : null;
-    const fieldData = Boolean(
-      data.loadingExperience?.metrics && Object.keys(data.loadingExperience.metrics).length > 0
-    );
-    return { score, fieldData, error: null };
-  } catch {
-    return { score: null, fieldData: false, error: "network-error" };
-  }
-}
-
-export async function CwvBadge() {
-  const { score, fieldData, error } = await getLiveScore();
-
-  const showPlaceholder = score === null;
-
+export function CwvBadge() {
   return (
     <div className="mt-6 flex justify-center">
       <div
-        className={`inline-flex flex-col items-center px-8 py-4 border-2 border-dashed ${
-          showPlaceholder ? "border-[var(--ink)]/40" : "border-[var(--green-note)]"
-        } rotate-0.5 bg-[var(--paper-card)]`}
+        id="cwv-badge"
+        className="inline-flex flex-col items-center px-8 py-4 border-2 border-dashed border-[var(--ink)]/40 rotate-0.5 bg-[var(--paper-card)]"
       >
         <span className="hand-note text-[20px] -rotate-1 -mt-7 mb-1 bg-[var(--paper)] px-2">
           this site, right now
         </span>
 
-        {showPlaceholder ? (
-          <>
-            <div className="text-[28px] font-semibold leading-none text-[var(--ink-muted)]">
-              Live score: after launch
-            </div>
-            <div className="text-[13.5px] text-[var(--ink-muted)] mt-2">
-              {error === "no-key"
-                ? "This badge measures this site against Google's Core Web Vitals the moment it goes live."
-                : "Score unavailable right now, checking again tomorrow."}
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="text-[28px] font-semibold leading-none">
-              Core Web Vitals: {score} / 100
-            </div>
-            <div className="text-[13.5px] text-[var(--ink-muted)] mt-2">
-              {fieldData
-                ? "Live lab score, refreshed daily. Real user data is still accumulating."
-                : "Live lab score, refreshed daily. Real user field data appears once traffic builds up."}
-            </div>
-          </>
-        )}
+        <div className="badge-score text-[28px] font-semibold leading-none text-[var(--ink-muted)]">
+          Live score: after launch
+        </div>
+        <div className="badge-note text-[13.5px] text-[var(--ink-muted)] mt-2">
+          This badge measures this site against Google&apos;s Core Web Vitals the moment it goes live.
+        </div>
       </div>
+
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(){
+  var box = document.getElementById('cwv-badge');
+  if (!box) return;
+  var KEY = 'cwv-score-v1';
+  var cached = null;
+  try { cached = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e) {}
+  if (cached && Date.now() - cached.t < 86400000) { render(cached.score); return; }
+  fetch('https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' + encodeURIComponent('https://yuuri.info') + '&strategy=mobile&category=performance')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var raw = d && d.lighthouseResult && d.lighthouseResult.categories && d.lighthouseResult.categories.performance && d.lighthouseResult.categories.performance.score;
+      if (typeof raw !== 'number') { render(null); return; }
+      var score = Math.round(raw * 100);
+      try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), score: score })); } catch(e) {}
+      render(score);
+    })
+    .catch(function(){ render(null); });
+  function render(score){
+    if (score === null || score === undefined) {
+      box.querySelector('.badge-score').textContent = 'Score unavailable';
+      box.querySelector('.badge-note').textContent = 'Checking again tomorrow.';
+      return;
+    }
+    box.querySelector('.badge-score').textContent = 'Core Web Vitals: ' + score + ' / 100';
+    box.querySelector('.badge-note').textContent = 'Live lab score, refreshed daily. Real user field data appears once traffic builds up.';
+    box.querySelector('.badge-score').classList.remove('text-[var(--ink-muted)]');
+    box.classList.remove('border-[var(--ink)]/40');
+    box.classList.add('border-[var(--green-note)]');
+  }
+})();`,
+        }}
+      />
     </div>
   );
 }

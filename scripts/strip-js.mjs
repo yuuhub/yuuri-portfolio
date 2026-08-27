@@ -73,3 +73,27 @@ for (const f of readdirSync(outDir, { recursive: false })) {
   console.log(`converted out/${f} -> out/${name}/index.html`);
 }
 console.log(`route normalization: ${converted} file(s) converted`);
+
+// Next 16 static-export quirk: robots.txt is generated to .next/server/app/
+// (as a directory with .body inside) but not copied into out/. Copy missing
+// generated files across.
+const nextServerApp = join(process.cwd(), ".next", "server", "app");
+for (const f of ["robots.txt", "sitemap.xml"]) {
+  const candidates = [
+    join(nextServerApp, f), // plain file
+    join(nextServerApp, f + ".body"), // Next 16: directory with .body file
+  ];
+  let copied = false;
+  for (const src of candidates) {
+    try {
+      const content = readFileSync(src);
+      writeFileSync(join(outDir, f), content);
+      console.log(`copied ${src.replace(process.cwd(), '.')} -> out/${f}`);
+      copied = true;
+      break;
+    } catch {
+      // try next candidate
+    }
+  }
+  if (!copied) console.log(`no generated ${f} found, skipping`);
+}

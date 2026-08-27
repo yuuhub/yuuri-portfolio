@@ -174,7 +174,7 @@ export default function Home() {
               </ul>
               <a
                 href={s.ctaHref}
-                className="mt-4 text-[15px] font-semibold border-b-2 border-[var(--accent)] self-start hover:text-[var(--accent)]"
+                className="mt-auto pt-4 text-[15px] font-semibold border-b-2 border-[var(--accent)] self-start hover:text-[var(--accent)]"
               >
                 {s.cta}
               </a>

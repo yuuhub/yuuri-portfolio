@@ -52,6 +52,9 @@ body {
 .wobble {
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
+.wobble-sm {
+  border-radius: 12px 5px 14px 6px / 6px 13px 5px 12px;
+}
 
 .hand-note {
   font-family: var(--font-caveat), cursive;

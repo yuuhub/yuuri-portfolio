@@ -45,3 +45,51 @@ export function SectionHeading({
     </div>
   );
 }
+
+/** Washi-tape strip for pinning photos into the notebook */
+export function TapeDoodle({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 90 28"
+      className={className}
+      aria-hidden="true"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M4 4 L86 2 L87 24 L3 26 Z"
+        fill="var(--accent)"
+        opacity="0.35"
+      />
+      <path
+        d="M4 4 L86 2 M3 26 L87 24"
+        stroke="var(--accent)"
+        strokeWidth="1.5"
+        opacity="0.5"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
+/** Sketchy vertical timeline connector for the about section */
+export function TimelineDoodle() {
+  return (
+    <svg
+      width="18"
+      height="100%"
+      viewBox="0 0 18 200"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      className="block"
+    >
+      <path
+        d="M9 0 C 11 50, 7 100, 10 150 C 11 175, 9 190, 9 200"
+        stroke="var(--ink)"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeDasharray="6 5"
+      />
+    </svg>
+  );
+}

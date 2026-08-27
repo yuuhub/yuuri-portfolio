@@ -1,6 +1,6 @@
 import { Topbar } from "@/components/topbar";
 import { Footer } from "@/components/footer";
-import { DoodleUnderline, StarDoodle, SectionHeading } from "@/components/doodles";
+import { DoodleUnderline, StarDoodle, SectionHeading, TapeDoodle, TimelineDoodle } from "@/components/doodles";
 import { services } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { testimonials, fieldNotes } from "@/data/content";
@@ -29,7 +29,7 @@ export default function Home() {
         <p className="text-[19px] max-w-[560px] text-[var(--ink-soft)]">
           I'm a <strong className="font-semibold text-[var(--ink)]">Lead WordPress Developer</strong>. I
           make WordPress sites fast and fix what stops visitors from becoming
-          leads. Based in Manila (UTC+8), remote for US teams. Open to
+          leads. Based in Manila (UTC+8), remote for US and UK teams. Open to
           full-time roles.
         </p>
         <div className="mt-8 flex gap-4 items-center relative flex-wrap">
@@ -215,6 +215,89 @@ export default function Home() {
               )}
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ============ ABOUT ============ */}
+      <section
+        id="about"
+        className="relative z-10 max-w-[960px] mx-auto px-6 scroll-mt-8"
+      >
+        <SectionHeading title="About me" note="the person behind the pages" />
+        <div className="card-paper-strong wobble p-6 md:p-8 mt-7">
+          <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 md:gap-10">
+            {/* Polaroid photo */}
+            <div className="mx-auto md:mx-0 w-fit">
+              <div className="relative bg-[#fffdf8] border-2 border-[var(--ink)] p-2 pb-10 rotate-2 shadow-[4px_5px_0_rgba(28,26,23,0.85)] w-[240px]">
+                <TapeDoodle className="absolute -top-3 left-1/2 -translate-x-1/2 w-[90px] h-[28px] -rotate-2" />
+                {/* Swap public/me.png for the real photo when ready */}
+                <img
+                  src="/me.png"
+                  alt="Yuuri Penas, Lead WordPress Developer"
+                  width={224}
+                  height={224}
+                  className="w-[224px] h-[224px] object-cover wobble-sm grayscale-[15%]"
+                  loading="lazy"
+                />
+                <span className="hand-note absolute bottom-2 left-3 text-[20px]">
+                  that&apos;s me
+                </span>
+              </div>
+            </div>
+
+            {/* Story + timeline */}
+            <div>
+              <p className="text-[15.5px] md:text-[16.5px] text-[var(--ink-soft)] leading-relaxed">
+                I started in UX design in 2015, drawing interfaces before I
+                ever built one. In 2022 I moved to the other side of the
+                screen and became a WordPress developer, and now I lead
+                WordPress work at Rocket Clicks, where our sites have to
+                perform for law firms that live and die by their search
+                rankings.
+              </p>
+              <p className="text-[15.5px] md:text-[16.5px] text-[var(--ink-soft)] leading-relaxed mt-4">
+                The design background is the difference: I build like a
+                developer but think like a designer, so nothing gets lost
+                between the mockup and the live site. And because the pages I
+                make are measured on real users, &ldquo;looks good&rdquo;
+                isn&apos;t done until Core Web Vitals agrees.
+              </p>
+              <div className="mt-6 flex gap-5">
+                <div className="shrink-0 w-[18px] flex justify-center">
+                  <TimelineDoodle />
+                </div>
+                <ol className="space-y-3 text-[15px]">
+                  <li className="flex items-baseline gap-3">
+                    <span className="hand-note text-[19px] whitespace-nowrap">2015</span>
+                    <span className="text-[var(--ink-soft)]">UX design, Ateneo de Naga</span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="hand-note text-[19px] whitespace-nowrap">2022</span>
+                    <span className="text-[var(--ink-soft)]">Full-time WordPress development</span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="hand-note text-[19px] whitespace-nowrap">now</span>
+                    <span className="text-[var(--ink-soft)]">Lead WordPress Developer, Rocket Clicks</span>
+                  </li>
+                </ol>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["PageSpeed Insights", "Lighthouse", "Cloudflare", "WP Rocket", "GA4", "GTM"].map(
+                  (tool) => (
+                    <span
+                      key={tool}
+                      className="text-[12.5px] border-[1.5px] border-[var(--ink)] px-2.5 py-0.5 bg-[var(--paper)] wobble-sm"
+                    >
+                      {tool}
+                    </span>
+                  )
+                )}
+              </div>
+              <span className="hand-note text-[20px] inline-block mt-5 rotate-1">
+                still excited by a fast page, every time
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 

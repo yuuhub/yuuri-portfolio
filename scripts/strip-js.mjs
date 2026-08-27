@@ -52,3 +52,24 @@ for (const file of htmlFiles) {
   }
 }
 console.log(`done: ${totalRemoved} framework script tag(s) removed across ${htmlFiles.length} HTML file(s)`);
+
+// Remove duplicate shadow files: Next static export emits both
+// blog.html and blog/index.html for the same route. Duplicate URLs
+// (with and without .html) are bad for SEO; keep the directory form.
+let shadowsRemoved = 0;
+for (const f of readdirSync(outDir, { recursive: true })) {
+  if (typeof f !== "string" || !f.endsWith(".html")) continue;
+  const withoutExt = f.slice(0, -5); // strip ".html"
+  if (withoutExt === "index" || withoutExt === "404") continue;
+  const dirIndex = join(outDir, withoutExt, "index.html");
+  try {
+    if (readdirSync(join(outDir, withoutExt), { recursive: false }).includes("index.html")) {
+      rmSync(join(outDir, f), { force: true });
+      shadowsRemoved++;
+      console.log(`removed shadow file: out/${f}`);
+    }
+  } catch {
+    // directory doesn't exist for this .html file — it's the only form, keep it
+  }
+}
+console.log(`shadow cleanup: ${shadowsRemoved} file(s) removed`);

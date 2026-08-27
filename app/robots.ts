@@ -5,7 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/icon.svg"],
     },
     sitemap: "https://yuuri.info/sitemap.xml",
+    host: "https://yuuri.info",
   };
 }

@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Field Notes: WordPress Performance Blog",
   description:
     "Field notes on WordPress performance, Core Web Vitals, and conversion optimization. Real numbers from real client work.",
+  alternates: {
+    canonical: "https://yuuri.info/blog",
+  },
 };
 
 export default function BlogIndex() {

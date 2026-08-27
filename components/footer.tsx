@@ -16,6 +16,11 @@ export function Footer() {
           <h2 className="text-[32px] font-semibold mt-2 mb-1">
             Have a slow site? Let&apos;s talk.
           </h2>
+          <p className="text-[15px] text-[var(--ink-soft)] max-w-[520px] mx-auto mt-1">
+            One audit and you&apos;ll know exactly what&apos;s slowing it
+            down, and what fixing it is worth. No pitch deck, just your
+            PageSpeed numbers.
+          </p>
           <a
             href="mailto:yuuriayano@gmail.com"
             className="text-[22px] font-semibold hover:text-[var(--accent)]"

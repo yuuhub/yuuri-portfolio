@@ -142,6 +142,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ MORE WORK ============ */}
+      <section className="relative z-10 max-w-[960px] mx-auto px-6">
+        <SectionHeading title="More work" note="a few pages I built" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-7">
+          {moreWork.map((c) => (
+            <div key={c.slug} className="card-paper wobble p-5">
+              <h3 className="text-[18px] font-semibold">{c.title}</h3>
+              <div className="hand-note text-[18px] text-[var(--accent)] mt-1">
+                {c.stack}
+              </div>
+              <p className="text-[14.5px] text-[var(--ink-soft)] mt-2">
+                {c.summary}
+              </p>
+              {c.url && (
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-block text-[14.5px] font-semibold border-b-2 border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  Visit site →
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ============ SERVICES ============ */}
       <section
         id="services"
@@ -185,34 +213,6 @@ export default function Home() {
               >
                 {s.cta}
               </a>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ============ MORE WORK ============ */}
-      <section className="relative z-10 max-w-[960px] mx-auto px-6">
-        <SectionHeading title="More work" note="a few pages I built" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-7">
-          {moreWork.map((c) => (
-            <div key={c.slug} className="card-paper wobble p-5">
-              <h3 className="text-[18px] font-semibold">{c.title}</h3>
-              <div className="hand-note text-[18px] text-[var(--accent)] mt-1">
-                {c.stack}
-              </div>
-              <p className="text-[14.5px] text-[var(--ink-soft)] mt-2">
-                {c.summary}
-              </p>
-              {c.url && (
-                <a
-                  href={c.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-block text-[14.5px] font-semibold border-b-2 border-[var(--accent)] hover:text-[var(--accent)]"
-                >
-                  Visit site →
-                </a>
-              )}
             </div>
           ))}
         </div>

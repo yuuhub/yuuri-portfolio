@@ -20,7 +20,7 @@ export default function Home() {
           performance, annotated
         </span>
         <h1 className="text-[clamp(24px,7.5vw,56px)] leading-[1.08] font-semibold max-w-[760px] mt-4 mb-5 tracking-tight">
-          Lead WordPress Developer: Performance, Core Web Vitals &amp; Conversion.{" "}
+          WordPress, made fast.{" "}
           <span className="block w-fit">
             <DoodleUnderline>Measured, not promised.</DoodleUnderline>
           </span>

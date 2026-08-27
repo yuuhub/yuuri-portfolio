@@ -230,11 +230,13 @@ export default function Home() {
             <div>
               <p className="text-[15.5px] md:text-[16.5px] text-[var(--ink-soft)] leading-relaxed">
                 I started in UX design in 2015, drawing interfaces before I
-                ever built one. In 2022 I moved to the other side of the
-                screen and became a WordPress developer. Today I lead
-                WordPress work at Rocket Clicks, where our sites have to
-                perform for law firms that live and die by their search
-                rankings.
+                ever built one. Freelancing on Upwork came next, then a
+                design-and-customers hybrid role at Talkpush, a recruiting
+                platform. In 2022 I crossed to the other side of the screen
+                for good and became a WordPress developer. I joined Sterling
+                Lawyers, a law firm, and got promoted to lead WordPress at
+                Rocket Clicks, their marketing agency for law firms, where
+                sites live and die by search rankings.
               </p>
               <p className="text-[15.5px] md:text-[16.5px] text-[var(--ink-soft)] leading-relaxed mt-4">
                 My favorite part is the strategy: architecting the solution
@@ -261,12 +263,24 @@ export default function Home() {
                     <span className="text-[var(--ink-soft)]">UX design, Ateneo de Naga</span>
                   </li>
                   <li className="flex items-baseline gap-3">
+                    <span className="hand-note text-[19px] whitespace-nowrap">2015-17</span>
+                    <span className="text-[var(--ink-soft)]">Freelance UX and design, Upwork</span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="hand-note text-[19px] whitespace-nowrap">2017-19</span>
+                    <span className="text-[var(--ink-soft)]">
+                      Talkpush, design + customer-facing work on a recruiting platform
+                    </span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
                     <span className="hand-note text-[19px] whitespace-nowrap">2022</span>
                     <span className="text-[var(--ink-soft)]">Full-time WordPress development</span>
                   </li>
                   <li className="flex items-baseline gap-3">
                     <span className="hand-note text-[19px] whitespace-nowrap">now</span>
-                    <span className="text-[var(--ink-soft)]">Lead WordPress Developer, Rocket Clicks</span>
+                    <span className="text-[var(--ink-soft)]">
+                      Joined Sterling Lawyers, promoted to Lead WordPress Developer at Rocket Clicks
+                    </span>
                   </li>
                 </ol>
               </div>
@@ -283,7 +297,7 @@ export default function Home() {
                 )}
               </div>
               <span className="hand-note text-[20px] inline-block mt-5 rotate-1">
-                still excited by a fast page, every time
+                the pivots were scary but worth it
               </span>
             </div>
 

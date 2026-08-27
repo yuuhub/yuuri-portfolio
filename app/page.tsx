@@ -3,7 +3,7 @@ import { Footer } from "@/components/footer";
 import { DoodleUnderline, StarDoodle, SectionHeading } from "@/components/doodles";
 import { services } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
-import { testimonials, blogPosts } from "@/data/content";
+import { testimonials, fieldNotes } from "@/data/content";
 import { SterlingChart } from "@/components/sterling-chart";
 import { CwvBadge } from "@/components/cwv-badge";
 
@@ -234,27 +234,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ BLOG ============ */}
+      {/* ============ FIELD NOTES ============ */}
       <section
         id="blog"
         className="relative z-10 max-w-[960px] mx-auto px-6 scroll-mt-8"
       >
-        <SectionHeading title="Field notes" note="the blog" />
+        <SectionHeading title="Field notes" note="things I learned the hard way" />
         <div className="mt-7">
-          {blogPosts.map((p) => (
-            <div
-              key={p.slug}
-              className="dash-divider py-3.5 px-1"
-            >
-              <a
-                href={`/blog/${p.slug}`}
-                className="text-[17px] font-semibold hover:text-[var(--accent)]"
-              >
-                {p.title}
-              </a>
-              <span className="hand-note text-[18px] text-[var(--ink-muted)] block mt-1">
-                {p.date}
+          {fieldNotes.map((f, i) => (
+            <div key={i} className="dash-divider py-3 px-1 flex items-baseline gap-4">
+              <span className="hand-note text-[16px] whitespace-nowrap w-[110px] shrink-0">
+                {f.tag}
               </span>
+              <p className="text-[15.5px] leading-snug">{f.note}</p>
             </div>
           ))}
         </div>

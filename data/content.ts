@@ -19,54 +19,51 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-export type BlogPost = {
-  slug: string;
-  title: string;
-  date: string;
-  excerpt: string;
+export type FieldNote = {
+  note: string;
+  tag: string;
 };
 
-export const blogPosts: BlogPost[] = [
+/**
+ * Short learnings from real client work, one line each.
+ * Full posts can be added later as a separate blogPosts array
+ * (title/date/slug/excerpt) and linked from the field notes section.
+ */
+export const fieldNotes: FieldNote[] = [
   {
-    slug: "law-firm-10-to-90-core-web-vitals",
-    title: "How I moved a law firm site from 10% to 90%++ Core Web Vitals Good",
-    date: "Sep 2026",
-    excerpt:
-      "The full story of the performance work behind the numbers: what was slow, what I changed, and how the business results followed.",
+    note: "The biggest CWV win on a 4,000+ page site wasn't one big fix. It was 40 small ones, prioritized by impact.",
+    tag: "core web vitals",
   },
   {
-    slug: "salesforce-api-broke-monthly",
-    title: "The Salesforce API integration that broke monthly for years",
-    date: "Oct 2026",
-    excerpt:
-      "A chronic integration failure, the root cause nobody found, and the fix that made it permanent.",
+    note: "Page builders ship roughly 4x the JavaScript of a custom theme. The evidence is right there in the bundle.",
+    tag: "page builders",
   },
   {
-    slug: "form-error-automations",
-    title: "Form error automations: recovering leads from malformed submissions",
-    date: "Nov 2026",
-    excerpt:
-      "When users fail to format inputs correctly, leads get lost. Here is how I built a safety net for previously lost revenue.",
+    note: "Self-hosted, subset fonts are the cheapest LCP win on the board. Removing one font request beats stacking three optimizations.",
+    tag: "fonts",
   },
   {
-    slug: "new-relic-monitoring-single-client",
-    title: "Building 24/7 monitoring with New Relic on a single client budget",
-    date: "Dec 2026",
-    excerpt:
-      "How incident detection went from days to under 30 minutes without an enterprise budget.",
+    note: "Caching is a multiplier, not a fix. It makes a fast site faster and a broken site broken faster.",
+    tag: "caching",
   },
   {
-    slug: "page-builders-4x-javascript",
-    title: "Why page builders cost ~4x the JavaScript of custom themes",
-    date: "Jan 2027",
-    excerpt:
-      "The data on page builder overhead, and what it means for Core Web Vitals and your budget.",
+    note: "The Salesforce integration broke monthly for years because nobody checked the API's rate limits until the 500s became routine.",
+    tag: "integrations",
   },
   {
-    slug: "what-a-core-web-vitals-audit-delivers",
-    title: "What a Core Web Vitals audit actually delivers",
-    date: "Feb 2027",
-    excerpt:
-      "A plain-language walkthrough of the audit process: baseline, root causes, prioritized fixes, and the before/after proof.",
+    note: "Form errors silently eat leads. A small automation catching malformed submissions recovered revenue the client never knew it was losing.",
+    tag: "forms",
+  },
+  {
+    note: "Monitoring only pays off when the alert reaches a human with a runbook. Same-day resolution beats a perfect dashboard.",
+    tag: "monitoring",
+  },
+  {
+    note: "Most 'slow site' tickets are three things: huge images, render-blocking scripts, and a plugin doing what a 5-line snippet does.",
+    tag: "diagnosis",
+  },
+  {
+    note: "Lighthouse is a floor, not a ceiling. Field data tells you what real users actually hit.",
+    tag: "measurement",
   },
 ];

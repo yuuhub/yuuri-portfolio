@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/data/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://yuuri.info";
@@ -18,11 +17,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...blogPosts.map((p) => ({
-      url: `${base}/blog/${p.slug}`,
-      lastModified: now,
-      changeFrequency: "yearly" as const,
-      priority: 0.6,
-    })),
   ];
 }

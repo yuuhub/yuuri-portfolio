@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 
 const navItems = [
   { name: "Case studies", mobile: "Work", href: "/#case-studies" },
@@ -69,11 +66,14 @@ function SketchClose() {
   );
 }
 
+/**
+ * Server component: zero client JS.
+ * The mobile drawer is driven by a tiny vanilla script (CSP-safe inline),
+ * so the page ships no React framework chunks at all.
+ */
 export function Topbar() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className="relative z-50">
+    <header id="site-header" className="relative z-50">
       <div className="max-w-[960px] mx-auto px-6">
         <div className="flex justify-between items-center pt-10 pb-2 ink-divider">
           <Link
@@ -99,72 +99,101 @@ export function Topbar() {
             ))}
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger (CSS toggled between the two icons) */}
           <button
             type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen(!open)}
+            data-menu-toggle
+            aria-label="Open menu"
+            aria-expanded="false"
             className="md:hidden self-center flex justify-center items-center w-11 h-11 -mr-2 -translate-y-[2px] hover:opacity-70"
           >
-            {open ? <SketchClose /> : <SketchHamburger />}
+            <span className="menu-icon-open flex">
+              <SketchHamburger />
+            </span>
+            <span className="menu-icon-close hidden">
+              <SketchClose />
+            </span>
           </button>
         </div>
       </div>
 
       {/* Mobile menu overlay */}
-      {open && (
-        <div className="md:hidden fixed inset-0 z-50 bg-[var(--paper)]">
-          <div className="ruled-paper h-full overflow-y-auto">
-            <div className="max-w-[960px] mx-auto px-6">
-              <div className="flex justify-between items-center pt-10 pb-2 ink-divider">
-                <span className="font-semibold text-[16px] tracking-wide">
-                  YUURI PENAS
-                </span>
-                <button
-                  type="button"
-                  aria-label="Close menu"
-                  onClick={() => setOpen(false)}
-                  className="self-center flex justify-center items-center w-11 h-11 -mr-2 hover:opacity-70"
-                >
-                  <SketchClose />
-                </button>
-              </div>
-
-              <nav
-                aria-label="Mobile navigation"
-                className="mt-12 flex flex-col gap-2"
+      <div
+        data-menu-overlay
+        className="hidden md:hidden fixed inset-0 z-50 bg-[var(--paper)]"
+      >
+        <div className="ruled-paper h-full overflow-y-auto">
+          <div className="max-w-[960px] mx-auto px-6">
+            <div className="flex justify-between items-center pt-10 pb-2 ink-divider">
+              <span className="font-semibold text-[16px] tracking-wide">
+                YUURI PENAS
+              </span>
+              <button
+                type="button"
+                data-menu-close
+                aria-label="Close menu"
+                className="self-center flex justify-center items-center w-11 h-11 -mr-2 hover:opacity-70"
               >
-                {navItems.map((item, i) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-4 py-4 border-b border-dashed border-[var(--ink)]/40"
-                  >
-                    <span className="hand-note text-[20px] text-[var(--accent)]">
-                      0{i + 1}
-                    </span>
-                    <span className="text-[28px] font-semibold group-hover:text-[var(--accent)] transition-colors">
-                      {item.name}
-                    </span>
-                  </Link>
-                ))}
-              </nav>
-
-              <div className="mt-16 hand-note text-2xl text-[var(--accent)] -rotate-1">
-                say hi
-              </div>
-              <a
-                href="mailto:yuuriayano@gmail.com"
-                className="mt-2 inline-block text-[19px] font-semibold border-b-2 border-[var(--accent)]"
-              >
-                yuuriayano@gmail.com
-              </a>
+                <SketchClose />
+              </button>
             </div>
+
+            <nav
+              aria-label="Mobile navigation"
+              className="mt-12 flex flex-col gap-2"
+            >
+              {navItems.map((item, i) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  data-menu-link
+                  className="group flex items-baseline gap-4 py-4 border-b border-dashed border-[var(--ink)]/40"
+                >
+                  <span className="hand-note text-[20px] text-[var(--accent)]">
+                    0{i + 1}
+                  </span>
+                  <span className="text-[28px] font-semibold group-hover:text-[var(--accent)] transition-colors">
+                    {item.name}
+                  </span>
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-16 hand-note text-2xl text-[var(--accent)] -rotate-1">
+              say hi
+            </div>
+            <a
+              href="mailto:yuuriayano@gmail.com"
+              className="mt-2 inline-block text-[19px] font-semibold border-b-2 border-[var(--accent)]"
+            >
+              yuuriayano@gmail.com
+            </a>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Vanilla menu toggle: no React, no framework JS on the page */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(){
+  var h = document.getElementById('site-header');
+  if (!h) return;
+  var btn = h.querySelector('[data-menu-toggle]');
+  var overlay = h.querySelector('[data-menu-overlay]');
+  if (!btn || !overlay) return;
+  function set(open){
+    h.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    overlay.classList.toggle('hidden', !open);
+  }
+  btn.addEventListener('click', function(){ set(!h.classList.contains('menu-open')); });
+  h.querySelectorAll('[data-menu-close], [data-menu-link]').forEach(function(el){
+    el.addEventListener('click', function(){ set(false); });
+  });
+})();`,
+        }}
+      />
     </header>
   );
 }

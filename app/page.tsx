@@ -31,7 +31,7 @@ export default function Home() {
           leads. Based in Manila (UTC+8), remote for US teams. Open to
           full-time roles.
         </p>
-        <div className="mt-8 flex gap-4 items-center relative">
+        <div className="mt-8 flex gap-4 items-center relative flex-wrap">
           <a href="#case-studies" className="btn-stamp primary">
             See the work
           </a>
@@ -41,7 +41,7 @@ export default function Home() {
           >
             Book a call
           </a>
-          <span className="hand-note text-[21px] -rotate-3 absolute left-[320px] top-[-10px] hidden sm:block">
+          <span className="hand-note text-[21px] -rotate-3 ml-2 -translate-y-1 hidden sm:inline-block">
             2 min, zero pressure
           </span>
         </div>

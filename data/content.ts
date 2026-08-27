@@ -28,8 +28,8 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "law-firm-10-to-89-core-web-vitals",
-    title: "How I moved a law firm site from 10% to 89% Core Web Vitals Good",
+    slug: "law-firm-10-to-90-core-web-vitals",
+    title: "How I moved a law firm site from 10% to 90%++ Core Web Vitals Good",
     date: "Sep 2026",
     excerpt:
       "The full story of the performance work behind the numbers: what was slow, what I changed, and how the business results followed.",

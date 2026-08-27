@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Yuuri Penas",
   },
   description:
-    "Lead WordPress developer specializing in performance, Core Web Vitals, and conversion optimization. Moved a law firm site from 10% to 89% Core Web Vitals Good and grew conversion 46%. Remote from Manila, UTC+8.",
+    "Lead WordPress developer specializing in performance, Core Web Vitals, and conversion optimization. Moved a law firm site from 10% to 90%++ Core Web Vitals Good and grew conversion 46%. Remote from Manila, UTC+8.",
   keywords: [
     "WordPress developer",
     "Core Web Vitals",
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     siteName: "Yuuri Penas",
     title: "Yuuri Penas | Lead WordPress Developer: Performance, Core Web Vitals & Conversion",
     description:
-      "I make WordPress sites fast and reliable for marketing-led companies. Core Web Vitals 10% to 89% Good, conversion +46%.",
+      "I make WordPress sites fast and reliable for marketing-led companies. Core Web Vitals 10% to 90%++ Good, conversion +46%.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Yuuri Penas | Lead WordPress Developer",
     description:
-      "I make WordPress sites fast and reliable for marketing-led companies. Core Web Vitals 10% to 89% Good, conversion +46%.",
+      "I make WordPress sites fast and reliable for marketing-led companies. Core Web Vitals 10% to 90%++ Good, conversion +46%.",
   },
   robots: {
     index: true,

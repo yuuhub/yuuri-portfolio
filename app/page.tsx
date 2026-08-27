@@ -57,11 +57,11 @@ export default function Home() {
               the whole point
             </span>
             <div className="text-[44px] font-semibold leading-none">
-              89%<small className="text-[20px] font-normal"> Good</small>
+              90%++<small className="text-[20px] font-normal"> Good</small>
             </div>
             <div className="text-[14.5px] text-[var(--ink-muted)] mt-2">
               of Core Web Vitals passed on a 4,000+ page site that was failing
-              before. 10% to 89% in 9 months.
+              before. 10% to 90%++ in 9 months.
             </div>
           </div>
           <div className="card-paper wobble p-5 relative">

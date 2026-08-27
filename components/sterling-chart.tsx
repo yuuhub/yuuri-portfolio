@@ -150,7 +150,7 @@ export function SterlingChart() {
         stroke="var(--accent)"
         title="2025: Core Web Vitals, weekly"
         note="the trend, not the noise"
-        ariaLabel="Line chart showing Core Web Vitals quality rising from about 10 percent in March to 89 percent in December 2025"
+        ariaLabel="Line chart showing Core Web Vitals quality rising from about 10 percent in March to over 90 percent in December 2025"
         lineLabel="CWV quality % (Good)"
       />
       <MiniChart

@@ -5,6 +5,7 @@ import { services } from "@/data/services";
 import { caseStudies } from "@/data/case-studies";
 import { testimonials, blogPosts } from "@/data/content";
 import { SterlingChart } from "@/components/sterling-chart";
+import { CwvBadge } from "@/components/cwv-badge";
 
 export default function Home() {
   const featured = caseStudies.find((c) => c.featured) ?? caseStudies[0];
@@ -85,6 +86,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <CwvBadge />
       </section>
 
       {/* ============ FLAGSHIP CASE STUDY ============ */}

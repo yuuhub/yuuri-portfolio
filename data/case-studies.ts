@@ -4,6 +4,7 @@ export type CaseStudy = {
   tag: string;
   stack: string;
   summary: string;
+  url?: string;
   metrics?: { label: string; value: string }[];
   featured?: boolean;
 };
@@ -28,6 +29,7 @@ export const caseStudies: CaseStudy[] = [
     title: "TriState Hydrovac",
     tag: "case study",
     stack: "Divi + custom CSS/JS",
+    url: "https://tristatehydrovac.com",
     summary:
       "Built the site with Divi and added custom design elements on top. Live at tristatehydrovac.com.",
   },
@@ -36,6 +38,7 @@ export const caseStudies: CaseStudy[] = [
     title: "UNAHCO",
     tag: "case study",
     stack: "Custom WP theme + Bootstrap",
+    url: "https://unahco.com",
     summary:
       "Custom WordPress theme development with Bootstrap integration for a Philippine cooperative.",
   },
@@ -44,6 +47,7 @@ export const caseStudies: CaseStudy[] = [
     title: "First Balfour Revamp",
     tag: "case study",
     stack: "Divi",
+    url: "https://firstbalfour.com",
     summary: "Led website redesign for a major Philippine energy company.",
   },
   {
@@ -51,6 +55,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Spark Therapy",
     tag: "case study",
     stack: "Divi",
+    url: "https://sparktherapy.net",
     summary: "Speech therapy platform built and designed with Divi.",
   },
   {
@@ -58,6 +63,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Myra PH Product Pages",
     tag: "case study",
     stack: "Custom product pages",
+    url: "https://myra.com.ph/products/myra-400-e/",
     summary: "Custom product pages for a leading Philippine skincare brand.",
   },
   {
@@ -65,6 +71,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Dr Mitchell Dickey Design",
     tag: "case study",
     stack: "Custom design",
+    url: "http://www.inspiringlife.online/clientProjProgress_Mitch/",
     summary: "Website design for a private psychiatric practice.",
   },
 ];

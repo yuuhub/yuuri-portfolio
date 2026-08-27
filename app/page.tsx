@@ -15,7 +15,7 @@ export default function Home() {
       <Topbar />
 
       {/* ============ HERO ============ */}
-      <section className="relative z-10 max-w-[960px] mx-auto px-4 sm:px-6 pt-[72px] pb-10">
+      <section className="relative z-10 max-w-[960px] mx-auto px-6 pt-[72px] pb-10">
         <span className="hand-note text-[26px] inline-block -rotate-1.2">
           performance, annotated
         </span>
@@ -46,8 +46,8 @@ export default function Home() {
       </section>
 
       {/* ============ STATS ============ */}
-      <section className="relative z-10 max-w-[960px] mx-auto px-4 sm:px-6 mt-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <section className="relative z-10 max-w-[960px] mx-auto px-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-5">
           <div className="card-paper wobble p-5 relative">
             <span className="absolute -top-[18px] -left-1.5">
               <StarDoodle />
@@ -91,21 +91,23 @@ export default function Home() {
         id="case-studies"
         className="relative z-10 max-w-[960px] mx-auto px-6 mt-14 scroll-mt-8"
       >
-        <div className="card-paper-strong wobble p-8 relative">
-          <span className="hand-note text-2xl absolute right-7 top-5 rotate-2">
-            flagship case study
-          </span>
-          <div className="hand-note text-[22px]">Case study 01</div>
-          <h2 className="text-[30px] font-semibold mt-1 mb-3 max-w-[640px] leading-tight">
+        <div className="card-paper-strong wobble p-6 md:p-8 relative">
+          <div className="flex items-baseline justify-between gap-3">
+            <div className="hand-note text-[22px]">Case study 01</div>
+            <span className="hand-note text-xl md:text-2xl rotate-2 whitespace-nowrap">
+              flagship case study
+            </span>
+          </div>
+          <h2 className="text-[24px] md:text-[30px] font-semibold mt-3 mb-3 max-w-[640px] leading-tight">
             {featured.title}
           </h2>
-          <p className="max-w-[620px] text-[16.5px] text-[var(--green-note)]">
+          <p className="max-w-[620px] text-[15.5px] md:text-[16.5px] text-[var(--green-note)]">
             {featured.summary}
           </p>
-          <div className="mt-5 text-[18px] font-semibold">
+          <div className="mt-5 text-[15px] md:text-[18px] font-semibold flex flex-wrap gap-x-2 gap-y-1">
             {featured.metrics?.map((m, i) => (
-              <span key={m.label}>
-                {i > 0 && <span className="mx-2">·</span>}
+              <span key={m.label} className="whitespace-nowrap">
+                {i > 0 && <span className="mx-1.5">·</span>}
                 {m.label}{" "}
                 <span className="text-[var(--accent)]">{m.value}</span>
               </span>
@@ -114,7 +116,7 @@ export default function Home() {
           <div className="mt-8">
             <SterlingChart />
           </div>
-          <div className="mt-6 text-[14px] text-[var(--ink-muted)]">
+          <div className="mt-6 text-[13.5px] md:text-[14px] text-[var(--ink-muted)]">
             Stack: {featured.stack}
           </div>
         </div>
@@ -133,7 +135,7 @@ export default function Home() {
               <div className="hand-note text-2xl text-[var(--accent)] mt-1">
                 {s.price}
                 {s.priceNote && (
-                  <span className="text-[16px] text-[var(--ink-muted)]">
+                  <span className="block md:inline text-[16px] text-[var(--ink-muted)]">
                     {" "}
                     {s.priceNote}
                   </span>
@@ -179,6 +181,16 @@ export default function Home() {
               <p className="text-[14.5px] text-[var(--ink-soft)] mt-2">
                 {c.summary}
               </p>
+              {c.url && (
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-block text-[14.5px] font-semibold border-b-2 border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  Visit site →
+                </a>
+              )}
             </div>
           ))}
         </div>
@@ -190,10 +202,10 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-7">
           {testimonials.map((t) => (
             <div key={t.name} className="card-paper-strong wobble p-6">
-              <p className="text-[15.5px] italic text-[var(--green-note)]">
+              <p className="text-[14.5px] md:text-[15.5px] italic text-[var(--green-note)]">
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <div className="mt-3 text-[14px] font-semibold">
+              <div className="mt-4 text-[14px] font-semibold">
                 {t.name}
                 <span className="block font-normal text-[13px] text-[var(--ink-muted)]">
                   {t.role}
@@ -214,7 +226,7 @@ export default function Home() {
           {blogPosts.map((p) => (
             <div
               key={p.slug}
-              className="flex justify-between items-baseline dash-divider py-3.5 px-1"
+              className="dash-divider py-3.5 px-1"
             >
               <a
                 href={`/blog/${p.slug}`}
@@ -222,7 +234,7 @@ export default function Home() {
               >
                 {p.title}
               </a>
-              <span className="hand-note text-[18px] text-[var(--ink-muted)] whitespace-nowrap ml-4">
+              <span className="hand-note text-[18px] text-[var(--ink-muted)] block mt-1">
                 {p.date}
               </span>
             </div>

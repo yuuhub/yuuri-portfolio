@@ -15,13 +15,15 @@ export default function Home() {
       <Topbar />
 
       {/* ============ HERO ============ */}
-      <section className="relative z-10 max-w-[960px] mx-auto px-6 pt-[72px] pb-10">
+      <section className="relative z-10 max-w-[960px] mx-auto px-4 sm:px-6 pt-[72px] pb-10">
         <span className="hand-note text-[26px] inline-block -rotate-1.2">
           performance, annotated
         </span>
-        <h1 className="text-[56px] leading-[1.08] font-semibold max-w-[760px] mt-4 mb-5 tracking-tight">
+        <h1 className="text-[clamp(24px,7.5vw,56px)] leading-[1.08] font-semibold max-w-[760px] mt-4 mb-5 tracking-tight">
           Lead WordPress Developer: Performance, Core Web Vitals &amp; Conversion.{" "}
-          <DoodleUnderline>Measured, not promised.</DoodleUnderline>
+          <span className="block w-fit">
+            <DoodleUnderline>Measured, not promised.</DoodleUnderline>
+          </span>
         </h1>
         <p className="text-[19px] max-w-[560px] text-[var(--ink-soft)]">
           I make WordPress sites fast and reliable for marketing-led companies.
@@ -37,14 +39,14 @@ export default function Home() {
           >
             Book a call
           </a>
-          <span className="hand-note text-[21px] -rotate-3 absolute left-[320px] top-[-10px]">
+          <span className="hand-note text-[21px] -rotate-3 absolute left-[320px] top-[-10px] hidden sm:block">
             2 min, zero pressure
           </span>
         </div>
       </section>
 
       {/* ============ STATS ============ */}
-      <section className="relative z-10 max-w-[960px] mx-auto px-6 mt-12">
+      <section className="relative z-10 max-w-[960px] mx-auto px-4 sm:px-6 mt-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="card-paper wobble p-5 relative">
             <span className="absolute -top-[18px] -left-1.5">
@@ -57,7 +59,8 @@ export default function Home() {
               89%<small className="text-[20px] font-normal"> Good</small>
             </div>
             <div className="text-[14.5px] text-[var(--ink-muted)] mt-2">
-              Core Web Vitals, 10% to 89% in 9 months
+              of Core Web Vitals passed on a 4,000+ page site that was failing
+              before. 10% to 89% in 9 months.
             </div>
           </div>
           <div className="card-paper wobble p-5 relative">
@@ -66,7 +69,8 @@ export default function Home() {
             </span>
             <div className="text-[44px] font-semibold leading-none">+46%</div>
             <div className="text-[14.5px] text-[var(--ink-muted)] mt-2">
-              Conversion rate, 9.4% to 13.7%
+              more form fills from the same traffic. Conversion rate, 9.4% to
+              13.7%.
             </div>
           </div>
           <div className="card-paper wobble p-5 relative">
@@ -75,7 +79,8 @@ export default function Home() {
             </span>
             <div className="text-[44px] font-semibold leading-none">22</div>
             <div className="text-[14.5px] text-[var(--ink-muted)] mt-2">
-              Critical incidents resolved, zero unnoticed downtime
+              critical incidents resolved, zero unnoticed downtime. Same-day
+              response, 15 to 30 minutes.
             </div>
           </div>
         </div>

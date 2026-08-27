@@ -15,7 +15,7 @@ export const caseStudies: CaseStudy[] = [
     tag: "flagship case study",
     stack: "WordPress, Divi child theme, WP Rocket, Cloudflare CDN, Cloudways, Redis, New Relic, Salesforce API, GA4",
     summary:
-      "Sole developer for one of the biggest family law firms in Wisconsin. Every form fill the firm receives comes through the website, so speed and reliability directly affect lead volume. I took Core Web Vitals from 10% to 89% Good, grew conversion 46%, and built 24/7 monitoring that cut incident response from days to under 30 minutes.",
+      "Sole developer for one of the biggest family law firms in Wisconsin. A 4,000+ page WordPress site that was slow and bloated, with every form fill the firm receives coming through the website. I took Core Web Vitals from 10% to 89% Good, grew conversion 46%, and built 24/7 monitoring that cut incident response from days to under 30 minutes.",
     metrics: [
       { label: "Core Web Vitals", value: "10% to 89%" },
       { label: "Conversion", value: "9.4% to 13.7%" },

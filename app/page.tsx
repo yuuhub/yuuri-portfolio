@@ -104,14 +104,29 @@ export default function Home() {
           <p className="max-w-[620px] text-[15.5px] md:text-[16.5px] text-[var(--green-note)]">
             {featured.summary}
           </p>
-          <div className="mt-5 text-[15px] md:text-[18px] font-semibold flex flex-wrap gap-x-2 gap-y-1">
-            {featured.metrics?.map((m, i) => (
-              <span key={m.label} className="whitespace-nowrap">
-                {i > 0 && <span className="mx-1.5">·</span>}
-                {m.label}{" "}
-                <span className="text-[var(--accent)]">{m.value}</span>
-              </span>
-            ))}
+          <div className="mt-5 text-[15px] md:text-[18px] font-semibold">
+            <div className="flex flex-col gap-1.5 md:hidden">
+              {featured.metrics?.map((m) => (
+                <div
+                  key={m.label}
+                  className="flex justify-between items-baseline gap-3"
+                >
+                  <span>{m.label}</span>
+                  <span className="text-[var(--accent)] whitespace-nowrap text-right">
+                    {m.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="hidden md:flex md:flex-wrap md:gap-x-2 md:gap-y-1">
+              {featured.metrics?.map((m, i) => (
+                <span key={m.label} className="whitespace-nowrap">
+                  {i > 0 && <span className="mx-1.5">·</span>}
+                  {m.label}{" "}
+                  <span className="text-[var(--accent)]">{m.value}</span>
+                </span>
+              ))}
+            </div>
           </div>
           <div className="mt-8">
             <SterlingChart />

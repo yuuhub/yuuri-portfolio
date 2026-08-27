@@ -10,13 +10,72 @@ const navItems = [
   { name: "Contact", mobile: "Contact", href: "/#contact" },
 ];
 
+/** Hand-drawn pen-stroke hamburger, matches the Field Notes sketch aesthetic */
+function SketchHamburger() {
+  return (
+    <svg
+      width="30"
+      height="22"
+      viewBox="0 0 30 22"
+      fill="none"
+      aria-hidden="true"
+      className="-rotate-2"
+    >
+      <path
+        d="M2 5 C 10 3.5, 19 6.5, 28 4"
+        stroke="var(--ink)"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M2 11 C 11 12.5, 20 9.5, 28 11"
+        stroke="var(--ink)"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M2 17 C 9 18.5, 19 15.5, 28 17"
+        stroke="var(--ink)"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+/** Hand-drawn pen-stroke X for the close state */
+function SketchClose() {
+  return (
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 26 26"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 4 C 9 9, 17 9, 22 22"
+        stroke="var(--ink)"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M4 22 C 9 17, 17 17, 22 4"
+        stroke="var(--ink)"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function Topbar() {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="relative z-50">
       <div className="max-w-[960px] mx-auto px-6">
-        <div className="flex justify-between items-baseline pt-10 pb-2 ink-divider">
+        <div className="flex justify-between items-center pt-10 pb-2 ink-divider">
           <Link
             href="/"
             className="font-semibold text-[16px] md:text-[18px] tracking-wide whitespace-nowrap"
@@ -46,23 +105,9 @@ export function Topbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="md:hidden flex flex-col justify-center items-center gap-[6px] w-11 h-11 -mr-2 hover:opacity-70"
+            className="md:hidden self-center flex justify-center items-center w-11 h-11 -mr-2 -translate-y-[2px] hover:opacity-70"
           >
-            <span
-              className={`block w-7 h-[3px] bg-[var(--ink)] transition-transform duration-200 ${
-                open ? "translate-y-[9px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block w-7 h-[3px] bg-[var(--ink)] transition-opacity duration-200 ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block w-7 h-[3px] bg-[var(--ink)] transition-transform duration-200 ${
-                open ? "-translate-y-[9px] -rotate-45" : ""
-              }`}
-            />
+            {open ? <SketchClose /> : <SketchHamburger />}
           </button>
         </div>
       </div>
@@ -72,7 +117,7 @@ export function Topbar() {
         <div className="md:hidden fixed inset-0 z-50 bg-[var(--paper)]">
           <div className="ruled-paper h-full overflow-y-auto">
             <div className="max-w-[960px] mx-auto px-6">
-              <div className="flex justify-between items-baseline pt-10 pb-2 ink-divider">
+              <div className="flex justify-between items-center pt-10 pb-2 ink-divider">
                 <span className="font-semibold text-[16px] tracking-wide">
                   YUURI PENAS
                 </span>
@@ -80,11 +125,9 @@ export function Topbar() {
                   type="button"
                   aria-label="Close menu"
                   onClick={() => setOpen(false)}
-                  className="flex flex-col justify-center items-center gap-[6px] w-11 h-11 -mr-2 hover:opacity-70"
+                  className="self-center flex justify-center items-center w-11 h-11 -mr-2 hover:opacity-70"
                 >
-                  <span className="block w-7 h-[3px] bg-[var(--ink)] translate-y-[9px] rotate-45" />
-                  <span className="block w-7 h-[3px] bg-[var(--ink)] opacity-0" />
-                  <span className="block w-7 h-[3px] bg-[var(--ink)] -translate-y-[9px] -rotate-45" />
+                  <SketchClose />
                 </button>
               </div>
 

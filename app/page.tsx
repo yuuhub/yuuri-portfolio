@@ -27,7 +27,8 @@ export default function Home() {
         </h1>
         <p className="text-[19px] max-w-[560px] text-[var(--ink-soft)]">
           I make WordPress sites fast and reliable for marketing-led companies.
-          Based in Manila (UTC+8), remote for US teams.
+          Based in Manila (UTC+8), remote for US teams. Open to full-time Lead
+          WordPress roles.
         </p>
         <div className="mt-8 flex gap-4 items-center relative">
           <a href="#case-studies" className="btn-stamp primary">

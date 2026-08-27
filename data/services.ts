@@ -25,6 +25,7 @@ export const services: Service[] = [
       "Written report with prioritized fixes and estimated impact",
       "Clear call: fix or rebuild",
       "1 week turnaround",
+      "Audit fee credited toward a Speed Optimization Sprint",
     ],
     notIncluded: [
       "Implementing fixes",
@@ -37,12 +38,12 @@ export const services: Service[] = [
   {
     slug: "speed-optimization-sprint",
     name: "Speed Optimization Sprint",
-    price: "from $450",
+    price: "from $700",
     priceNote: "fixed by scope",
     description:
-      "I implement the fixes, re-measure, and document the before and after. You keep the report.",
+      "Audit included: I find what is slow, fix it, re-measure, and hand you the before and after proof.",
     includes: [
-      "The audit (or works from an existing audit)",
+      "Performance audit included (credited if you bring an existing one)",
       "P0 and P1 fixes: images, caching, scripts, critical CSS, fonts, plugins, database, CDN",
       "Re-measurement and a before/after report",
       "2 to 4 weeks depending on scope",

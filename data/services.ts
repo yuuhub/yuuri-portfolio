@@ -38,7 +38,7 @@ export const services: Service[] = [
   {
     slug: "speed-optimization-sprint",
     name: "Speed Optimization Sprint",
-    price: "from $700",
+    price: "from $1,200",
     priceNote: "fixed by scope",
     description:
       "Audit included: I find what is slow, fix it, re-measure, and hand you the before and after proof.",

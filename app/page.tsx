@@ -27,9 +27,9 @@ export default function Home() {
         </h1>
         <p className="text-[19px] max-w-[560px] text-[var(--ink-soft)]">
           I'm a <strong className="font-semibold text-[var(--ink)]">Lead WordPress Developer</strong>. I
-          make WordPress sites fast and reliable for marketing-led companies.
-          Based in Manila (UTC+8), remote for US teams. Open to full-time
-          roles.
+          make WordPress sites fast and fix what stops visitors from becoming
+          leads. Based in Manila (UTC+8), remote for US teams. Open to
+          full-time roles.
         </p>
         <div className="mt-8 flex gap-4 items-center relative">
           <a href="#case-studies" className="btn-stamp primary">

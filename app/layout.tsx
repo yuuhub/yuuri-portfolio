@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     siteName: "Yuuri Penas",
     title: "Yuuri Penas | Lead WordPress Developer: Performance, Core Web Vitals & Conversion",
     description:
-      "I make WordPress sites fast and reliable for marketing-led companies. Core Web Vitals 10% to 90%++ Good, conversion +46%.",
+      "I make WordPress sites fast and fix what stops visitors from becoming leads. Core Web Vitals 10% to 90%++ Good, conversion +46%.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Yuuri Penas | Lead WordPress Developer",
     description:
-      "I make WordPress sites fast and reliable for marketing-led companies. Core Web Vitals 10% to 90%++ Good, conversion +46%.",
+      "I make WordPress sites fast and fix what stops visitors from becoming leads. Core Web Vitals 10% to 90%++ Good, conversion +46%.",
   },
   robots: {
     index: true,

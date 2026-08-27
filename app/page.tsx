@@ -80,8 +80,7 @@ export default function Home() {
             </span>
             <div className="text-[44px] font-semibold leading-none">22</div>
             <div className="text-[14.5px] text-[var(--ink-muted)] mt-2">
-              critical incidents resolved, zero unnoticed downtime. Same-day
-              response, 15 to 30 minutes.
+              critical incidents, all resolved same day. Monitored 24/7.
             </div>
           </div>
         </div>

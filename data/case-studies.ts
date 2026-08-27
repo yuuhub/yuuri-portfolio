@@ -20,7 +20,7 @@ export const caseStudies: CaseStudy[] = [
     metrics: [
       { label: "Core Web Vitals", value: "10% to 90%++" },
       { label: "Conversion", value: "9.4% to 13.7%" },
-      { label: "Incidents", value: "22 resolved, 0 unnoticed" },
+      { label: "Incidents", value: "22 resolved same day" },
     ],
     featured: true,
   },

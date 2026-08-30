@@ -57,6 +57,8 @@ export function Footer() {
           Built on Next.js. This page scores what it sells.
         </p>
       </div>
+      {/* Vercel Web Analytics beacon: edge-served, deferred, no bundle impact */}
+      <script defer src="/_vercel/insights/script.js" />
     </footer>
   );
 }

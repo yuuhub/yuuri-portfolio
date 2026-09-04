@@ -57,7 +57,7 @@ export default function Home() {
             <span className="absolute -top-[18px] -left-1.5">
               <StarDoodle />
             </span>
-            <span className="hand-note text-[20px] absolute -top-[26px] right-2 rotate-6">
+            <span className="hand-note text-[20px] absolute -top-[26px] right-2 -rotate-[30deg]">
               the whole point
             </span>
             <div className="text-[44px] font-semibold leading-none">
@@ -69,7 +69,7 @@ export default function Home() {
             </div>
           </div>
           <div className="card-paper wobble p-5 relative">
-            <span className="hand-note text-[20px] absolute -top-[26px] right-2 rotate-6">
+            <span className="hand-note text-[20px] absolute -top-[26px] right-2 -rotate-[30deg]">
               business result
             </span>
             <div className="text-[44px] font-semibold leading-none">+46%</div>
@@ -79,7 +79,7 @@ export default function Home() {
             </div>
           </div>
           <div className="card-paper wobble p-5 relative">
-            <span className="hand-note text-[20px] absolute -top-[26px] right-2 rotate-6">
+            <span className="hand-note text-[20px] absolute -top-[26px] right-2 -rotate-[30deg]">
               reliability
             </span>
             <div className="text-[44px] font-semibold leading-none">22</div>
